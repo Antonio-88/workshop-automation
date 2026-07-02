@@ -1,0 +1,8 @@
+- name: Downcase REPO var
+  run: |
+    echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
+
+- name: Build and push
+  uses: docker/build-push-action@v5
+  with:
+    tags: ghcr.io/${{ env.REPO_LC }}/c-bye:latest
